@@ -26,12 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'title',
+            [
+              'attribute'=>'title',
+              'format' => 'html',
+              'value'=> function($model){
+                return Html::a($model->title,'view','id'=>$model->id]);
+              }
+            ],
             'detail:ntext',
             'price',
-            'product_type_id',
+            'type',
+            [
+              'attribute' => 'type',
+              'fi'
+            ]
             // 'amount',
 
-            ['class' => 'yii\grid\ActionColumn'],
+          //  ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 </div>
