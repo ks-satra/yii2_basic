@@ -3,6 +3,13 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+
+use app\models\ProductType;
+use yii\helpers\ArrayHelper;
+
+$productType = ProductType::find()->all();
+$productTypeList = ArrayHelper::map($productType,'id','title');
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -24,12 +31,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            //'id',
             'title',
-            'detail:ntext',
+            //'detail:ntext',
             'price',
-            'product_type_id',
-            // 'amount',
+            //'product_type_id',
+             [
+              'attribute' => 'product_type_id',
+              'filter' => $productTypeList,
+              'label' => 'ประเภทสินค้า',
+              'value' => function($model)
+                {
+                    return $model->productType->title;
+                }
+            ],
+            //'amount',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

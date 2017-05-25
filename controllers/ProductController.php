@@ -1,14 +1,11 @@
 <?php
-
 namespace app\controllers;
-
 use Yii;
 use app\models\Product;
 use app\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
 /**
  * ProductController implements the CRUD actions for Product model.
  */
@@ -28,22 +25,23 @@ class ProductController extends Controller
             ],
         ];
     }
-
+    public function actions(){
+      $this->layout = 'product-layout';
+    }
     /**
      * Lists all Product models.
      * @return mixed
      */
     public function actionIndex()
     {
+        //$this->layout = 'front-page';
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
-
     /**
      * Displays a single Product model.
      * @param integer $id
@@ -55,7 +53,6 @@ class ProductController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
     /**
      * Creates a new Product model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -64,7 +61,6 @@ class ProductController extends Controller
     public function actionCreate()
     {
         $model = new Product();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -73,7 +69,6 @@ class ProductController extends Controller
             ]);
         }
     }
-
     /**
      * Updates an existing Product model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -83,7 +78,6 @@ class ProductController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -92,7 +86,6 @@ class ProductController extends Controller
             ]);
         }
     }
-
     /**
      * Deletes an existing Product model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -102,10 +95,8 @@ class ProductController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
-
         return $this->redirect(['index']);
     }
-
     /**
      * Finds the Product model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

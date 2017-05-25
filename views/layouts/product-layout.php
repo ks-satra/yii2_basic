@@ -1,9 +1,12 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\NavBar;
 use yii\bootstrap\Nav;
 use app\assets\AppAsset;
 AppAsset::register($this);
+use app\models\ProductType;
+$list = ProductType::find()->all();
  ?>
 
 
@@ -24,7 +27,7 @@ AppAsset::register($this);
 
       <?php
       NavBar::begin([
-          'brandLabel' => $this->title,
+          'brandLabel' => 'My Company',
           'brandUrl' => Yii::$app->homeUrl,
           'options' => [
               'class' => 'navbar-inverse navbar-fixed-top',
@@ -63,8 +66,24 @@ AppAsset::register($this);
   <div class="container">
 
     <div class="row">
-
-      <div class="col-sm-12">
+      <div class="col-sm-3">
+          <h3>Menu</h3>
+          <ul class="nav nav-pills nav-stacked">
+            <?php foreach($list as $model): ?>
+            <li role="presentation" >
+              <a href="<?=Url::to(['/product','ProductSearch[product_type_id]'=>$model->id])?>"><?=$model->title?>
+                <?php
+                $count = count($model->products);
+                if($count):
+                 ?>
+                <span class="badge"><?=$count?></span>
+              <?php endif;?>
+              </a>
+            </li>
+          <?php endforeach; ?>
+          </ul>
+      </div>
+      <div class="col-sm-9">
           <?=$content?>
       </div>
     </div>

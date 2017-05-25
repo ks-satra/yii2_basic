@@ -27,12 +27,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= DetailView::widget([
         'model' => $model,
-        'attributes' => [
-            'id',
+            //'id',
+            'attributes' => [
             'title',
             'detail:ntext',
             'price',
-            'product_type_id',
+            //'product_type_id',
+            [
+              'attribute' => 'product_type_id',
+              //'label' => 'ประเภทสินค้า',
+              'value' => $model->productType->title
+            ],
+
             'amount',
         ],
     ]) ?>

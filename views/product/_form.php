@@ -3,6 +3,11 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+use app\models\ProductType;
+use yii\helpers\ArrayHelper;
+
+$productType = ProductType::find()->all();
+$productTypeList = ArrayHelper::map($productType,'id','title');
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
 /* @var $form yii\widgets\ActiveForm */
@@ -18,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'product_type_id')->textInput() ?>
+    <?= $form->field($model, 'product_type_id')->dropDownList($productTypeList) ?>
 
     <?= $form->field($model, 'amount')->textInput() ?>
 

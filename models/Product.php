@@ -47,12 +47,12 @@ class Product extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Title',
-            'detail' => 'Detail',
-            'price' => 'Price',
-            'product_type_id' => 'Product Type ID',
-            'amount' => 'Amount',
+            'id' => 'ลำดับ',
+            'title' => 'ชื่อสินค้า',
+            'detail' => 'รายละเอียดสินค้า',
+            'price' => 'ราคา',
+            'product_type_id' => 'ประเภทสินค้า',
+            'amount' => 'จำนวน',
         ];
     }
 
