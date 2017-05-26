@@ -24,7 +24,8 @@ AppAsset::register($this);
 
       <?php
       NavBar::begin([
-          'brandLabel' => 'My Company',
+          //<i class="glyphicon glyphicon-piggy-bank" aria-hidden="true"></i>
+          'brandLabel' => 'ตะกร้าของฉัน',
           'brandUrl' => Yii::$app->homeUrl,
           'options' => [
               'class' => 'navbar-inverse navbar-fixed-top',
@@ -33,18 +34,19 @@ AppAsset::register($this);
       echo Nav::widget([
           'options' => ['class' => 'navbar-nav navbar-right'],
           'items' => [
-              ['label' => 'Home', 'url' => ['/site/index']],
-              ['label' => 'Hello World', 'url' => ['/hello/index']],
-              ['label' => 'Product', 'url' => ['/product'],
+              //['label' => 'Home', 'url' => ['/site/index']],
+              ['label' => 'หน้าแรก', 'url' => ['/site/index']],
+              ['label' => 'ข้อมูลโปรโมชั่น', 'url' => ['/hello/index']],
+              ['label' => 'ผลิตภัณฑ์', 'url' => ['/product'],
               'items'=>[
                   ['label' => 'รายการสินค้า', 'url' => ['/product'] ],
                   ['label' => 'ประเภทสินค้า', 'url' => ['/product-type'] ]
                 ]
             ],
-              ['label' => 'About', 'url' => ['/site/about']],
-              ['label' => 'Contact', 'url' => ['/site/contact']],
+              ['label' => 'เกี่ยวกับ', 'url' => ['/site/about']],
+              ['label' => 'ติดต่อเรา', 'url' => ['/site/contact']],
               Yii::$app->user->isGuest ? (
-                  ['label' => 'Login', 'url' => ['/site/login']]
+                  ['label' => 'เข้าสู่ระบบ', 'url' => ['/site/login']]
               ) : (
                   '<li>'
                   . Html::beginForm(['/site/logout'], 'post')
@@ -58,22 +60,23 @@ AppAsset::register($this);
           ],
       ]);
       NavBar::end();
+
       ?>
 
   <div class="container">
 
 
-    <div class="jumbotron" style="background:red;">
-          <h1>สวัสดีน้องๆ</h1>
+    <div class="jumbotron" style="background:HotPink;">
+          <h2>ยินดีตอนรับเข้าสู่ระบบการจำหน่ายสินค้าเพื่อคุณ</h2>
           <p>...</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+          <p><a class="btn btn-danger btn-lg" href="#" role="button">ตกลง</a></p>
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-sm-12">
           <?=$content?>
       </div>
-    </div>
+    </div> -->
   </div>
 
 </div>

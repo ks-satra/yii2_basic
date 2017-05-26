@@ -33,18 +33,18 @@ AppAsset::register($this);
       echo Nav::widget([
           'options' => ['class' => 'navbar-nav navbar-right'],
           'items' => [
-              ['label' => 'Home', 'url' => ['/site/index']],
-              ['label' => 'Hello World', 'url' => ['/hello/index']],
-              ['label' => 'Product', 'url' => ['/product'],
+              ['label' => 'หน้าแรก', 'url' => ['/site/index']],
+              ['label' => 'ข้อมูลโปรโมชั่น', 'url' => ['/hello/index']],
+              ['label' => 'ผลิตภัณฑ์', 'url' => ['/product'],
               'items'=>[
                   ['label' => 'รายการสินค้า', 'url' => ['/product'] ],
                   ['label' => 'ประเภทสินค้า', 'url' => ['/product-type'] ]
                 ]
             ],
-              ['label' => 'About', 'url' => ['/site/about']],
-              ['label' => 'Contact', 'url' => ['/site/contact']],
+              ['label' => 'เกี่ยวกับ', 'url' => ['/site/about']],
+              ['label' => 'ติดต่อเรา', 'url' => ['/site/contact']],
               Yii::$app->user->isGuest ? (
-                  ['label' => 'Login', 'url' => ['/site/login']]
+                  ['label' => 'เข้าสู่ระบบ', 'url' => ['/site/login']]
               ) : (
                   '<li>'
                   . Html::beginForm(['/site/logout'], 'post')
